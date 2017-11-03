@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:if="${student==null}"><title>添加学生信息</title></th:block>
+	<th:block th:if="${student!=null}"><title>修改学生信息</title></th:block>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div style="text-align: center;margin:0 auto;width: 1000px; ">
+<th:block th:if="${student==null}"><h1>添加学生信息</h1></th:block>
+<th:block th:if="${student!=null}"><h1>修改学生信息</h1></th:block>
+<form th:action="addUpdateStudent" th:method="post">
+	<input th:if="${student!=null}" th:type="hidden" th:name="id" th:value="${student.id}"/>
+<table width="100%" border="1" cellspacing="1" cellpadding="0">
+    <tr>
+        <td>姓名</td><td>
+	        <input th:type="text" th:placeholder="王赛超" th:name="name" th:if="${student==null}"/>
+	        <input th:type="text" th:placeholder="王赛超" th:name="name" th:if="${student!=null}" th:value="${student.name}"/>
+        </td>
+        <td>年龄</td><td>
+	        <input th:type="text" th:placeholder="24" th:name="age" th:if="${student==null}"/>
+	        <input th:type="text" th:placeholder="24" th:name="age" th:if="${student!=null}" th:value="${student.age}"/>
+        </td>
+        <td>地址</td><td>
+	        <input th:type="text" th:placeholder="河北邯郸" th:name="address" th:if="${student==null}"/>
+	        <input th:type="text" th:placeholder="河北邯郸" th:name="address" th:if="${student!=null}" th:value="${student.address}"/>
+        </td>
+    </tr>
+</table>
+<input th:type="submit" th:id="add" th:value="提交"/>
+</form>
+</div>
+</body>
+</html>
